@@ -13,11 +13,18 @@
     "prettier"
   ],
   "extends": [
-    "airbnb",
     "plugin:react/recommended",
     "plugin:import/recommended"
   ],
   "rules": {
+    "react/function-component-definition":[
+      2,
+      { "namedComponents": [
+        "arrow-function",
+        "function-declaration"
+      ] }
+    ],
+    "arrow-body-style": "off"
   },
   "settings": {
     "react": {
@@ -42,11 +49,11 @@
 
   "overrides": [
     {
-      "files": ["**/__tests__/**/*", "**/*.{spec,test}.*"],
+      "plugins": ["jest"],
+      "files": ["test/**/*.spec.js", "test/setup-*.js"],
       "env": {
-        "jest/globals": true
+        "jest": true
       },
-      "plugins": ["jest", "testing-library"],
       "extends": [
         "plugin:jest/recommended",
         "plugin:jest-dom/recommended",
